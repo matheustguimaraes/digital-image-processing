@@ -1,34 +1,35 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
-from mpl_toolkits import axisartist as ax
-# for spine in plt.gca().spines.values():
-#     spine.set_visible(False)
 
-def get_gaussian_filter(img, mask_size=3):
-    borders = int(mask_size / 2)
-    gaussian_image = img[:, :].copy()
+
+def set_mask_size(mask_size):
+    gaussian_kernel = 0
+    division = 0
     if mask_size == 3:
+        division = 16
         gaussian_kernel = np.array([[1, 2, 1],
                                     [2, 4, 2],
                                     [1, 2, 1]])
-        for i in range(borders, img.shape[0] - borders):
-            for j in range(borders, img.shape[1] - borders):
-                kernel = img[i - borders:i + borders + 1, j - borders:j + borders + 1] * gaussian_kernel
-                result = np.sum(np.ravel(kernel)) / 16
-                gaussian_image[i, j] = result
-
     elif mask_size == 5:
+        division = 256
         gaussian_kernel = np.array([[1, 4, 6, 4, 1],
                                     [4, 16, 24, 16, 4],
                                     [6, 24, 36, 24, 6],
                                     [4, 16, 24, 16, 4],
                                     [1, 4, 6, 4, 1]])
-        for i in range(borders, img.shape[0] - borders):
-            for j in range(borders, img.shape[1] - borders):
-                kernel = img[i - borders:i + borders + 1, j - borders:j + borders + 1] * gaussian_kernel
-                result = np.sum(np.ravel(kernel)) / 256
-                gaussian_image[i, j] = result
+    return gaussian_kernel, division
+
+
+def get_gaussian_filter(image, mask_size=3):
+    borders = int(mask_size / 2)
+    gaussian_image = image[:, :].copy()
+    gaussian_kernel, division = set_mask_size(mask_size)
+    for i in range(borders, image.shape[0] - borders):
+        for j in range(borders, image.shape[1] - borders):
+            kernel = image[i - borders:i + borders + 1, j - borders:j + borders + 1] * gaussian_kernel
+            result = np.sum(np.ravel(kernel)) / division
+            gaussian_image[i, j] = result
     return gaussian_image
 
 

@@ -15,8 +15,8 @@ def get_median_filter(img, mask_size=3):
 
 
 if __name__ == '__main__':
-    img = cv2.imread('../samples/baboon.jpg')
-    gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    image = cv2.imread('../samples/baboon.jpg')
+    gray_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
     images = []
     iterator = 3
