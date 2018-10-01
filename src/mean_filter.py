@@ -14,7 +14,7 @@ def get_mean_filter(img, mask_size=3):
 
 
 if __name__ == '__main__':
-    img = cv2.imread('../samples/baboon.jpg')
+    img = cv2.imread('../samples/lena.jpg')
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     images = []
@@ -29,6 +29,7 @@ if __name__ == '__main__':
     for x in range(len(images)):
         plt.subplot(2, 3, x + 1), plt.imshow(images[x], 'gray')
         plt.title(titles[x])
+        plt.axis('off')
         cv2.imwrite("../results/mean_filter_image_mask_{}.jpg".format(x + 1), images[x])
 
     fig.savefig("../results/mean_filter_figure.jpg")

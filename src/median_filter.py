@@ -30,6 +30,7 @@ if __name__ == '__main__':
     for x in range(len(images)):
         plt.subplot(2, 3, x + 1), plt.imshow(images[x], 'gray')
         plt.title(titles[x])
+        plt.axis('off')
         cv2.imwrite("../results/median_filter_image_mask_{}.jpg".format(x + 1), images[x])
 
     fig.savefig("../results/median_filter_figure.jpg")
