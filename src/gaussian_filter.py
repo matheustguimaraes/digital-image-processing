@@ -34,7 +34,7 @@ def get_gaussian_filter(gray_image, mask_size=3):
 
 
 if __name__ == '__main__':
-    img = cv2.imread('../samples/baboon.jpg')
+    img = cv2.imread('../samples/lena.jpg')
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     gaussian_filter_3x3 = get_gaussian_filter(gray_img, 3)

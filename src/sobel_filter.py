@@ -33,7 +33,7 @@ def get_sobel_filter(gray_image):
 
 
 if __name__ == '__main__':
-    img = cv2.imread('../samples/tiger.jpg')
+    img = cv2.imread('../samples/lena.jpg')
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     sobel, sobel_vertical, sobel_horizontal = get_sobel_filter(gray_img)

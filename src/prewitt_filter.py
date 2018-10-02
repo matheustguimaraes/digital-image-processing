@@ -33,7 +33,7 @@ def get_prewitt_filter(gray_image):
 
 
 if __name__ == '__main__':
-    img = cv2.imread('../samples/tiger.jpg')
+    img = cv2.imread('../samples/lena.jpg')
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     prewitt, prewitt_vertical, prewitt_horizontal = get_prewitt_filter(gray_img)
