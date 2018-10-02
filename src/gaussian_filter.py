@@ -57,9 +57,9 @@ if __name__ == '__main__':
 
     fig = plt.figure(0)
     titles = ['Gray Image',
-              '3x3 mask',
+              '3x3 mask, 1 time',
               '3x3 mask, 2 times',
-              '5x5 mask',
+              '5x5 mask, 1 time',
               '5x5 mask, 2 times',
               '5x5 mask, 3 times']
     for x in range(len(images)):
