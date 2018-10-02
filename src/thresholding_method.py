@@ -29,6 +29,6 @@ if __name__ == '__main__':
         plt.axis('off')
         cv2.imwrite("../results/thresholding_image_{}.jpg".format(x + 1), images[x])
 
-    fig.savefig("../results/threshold_method_figure.jpg")
+    fig.savefig("../results/thresholding_method_figure.jpg")
     plt.show()
     plt.close()
