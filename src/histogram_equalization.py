@@ -28,14 +28,12 @@ if __name__ == '__main__':
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     histogram = get_histogram(gray_img)
-
     eq_image = get_image_equalization(gray_img)
     histogram_equalization = get_histogram(eq_image)
 
     images = [gray_img, histogram, eq_image, histogram]
 
     fig = plt.figure(0)
-
     ax1 = fig.add_subplot(2, 2, 1)
     plt.axis('off')
     ax1.imshow(gray_img, cmap='gray')

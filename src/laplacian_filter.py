@@ -33,14 +33,10 @@ if __name__ == '__main__':
     img = cv2.imread('../samples/lena.jpg')
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    images = []
-    images.append(gray_img)
-
     laplacian_filter_3x3 = get_laplacian_filter(gray_img, 3)
-    images.append(laplacian_filter_3x3)
-
     laplacian_filter_5x5 = get_laplacian_filter(gray_img, 5)
-    images.append(laplacian_filter_5x5)
+
+    images = [gray_img, laplacian_filter_3x3, laplacian_filter_5x5]
 
     fig = plt.figure(0)
     titles = ['Gray Image', '3x3 mask', '5x5 mask']

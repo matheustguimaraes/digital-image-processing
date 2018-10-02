@@ -36,12 +36,9 @@ if __name__ == '__main__':
     img = cv2.imread('../samples/tiger.jpg')
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    images = []
-    images.append(gray_img)
     sobel, sobel_vertical, sobel_horizontal = get_sobel_filter(gray_img)
-    images.append(sobel)
-    images.append(sobel_vertical)
-    images.append(sobel_horizontal)
+
+    images = [gray_img, sobel, sobel_vertical, sobel_horizontal]
 
     fig = plt.figure(0)
     titles = ['Gray Image', 'Total', 'Vertical', 'Horizontal']

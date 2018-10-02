@@ -37,23 +37,18 @@ if __name__ == '__main__':
     img = cv2.imread('../samples/baboon.jpg')
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    images = []
-    images.append(gray_img)
-
     gaussian_filter_3x3 = get_gaussian_filter(gray_img, 3)
-    images.append(gaussian_filter_3x3)
-
     gaussian_filter_3x3_2_times = get_gaussian_filter(gaussian_filter_3x3, 3)
-    images.append(gaussian_filter_3x3_2_times)
-
     gaussian_filter_5x5 = get_gaussian_filter(gray_img, 5)
-    images.append(gaussian_filter_5x5)
-
     gaussian_filter_5x5_2_times = get_gaussian_filter(gaussian_filter_5x5, 5)
-    images.append(gaussian_filter_5x5_2_times)
-
     gaussian_filter_5x5_3_times = get_gaussian_filter(gaussian_filter_5x5_2_times, 5)
-    images.append(gaussian_filter_5x5_3_times)
+
+    images = [gray_img,
+              gaussian_filter_3x3,
+              gaussian_filter_3x3_2_times,
+              gaussian_filter_5x5,
+              gaussian_filter_5x5_2_times,
+              gaussian_filter_5x5_3_times]
 
     fig = plt.figure(0)
     titles = ['Gray Image',

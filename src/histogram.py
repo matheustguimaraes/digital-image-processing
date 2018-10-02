@@ -21,7 +21,6 @@ if __name__ == '__main__':
     images = [gray_img, histogram]
 
     fig = plt.figure(0)
-
     ax1 = fig.add_subplot(1, 2, 1)
     plt.axis('off')
     ax_u = ax1.imshow(gray_img, cmap='gray')

@@ -36,12 +36,9 @@ if __name__ == '__main__':
     img = cv2.imread('../samples/tiger.jpg')
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    images = []
-    images.append(gray_img)
     prewitt, prewitt_vertical, prewitt_horizontal = get_prewitt_filter(gray_img)
-    images.append(prewitt)
-    images.append(prewitt_vertical)
-    images.append(prewitt_horizontal)
+
+    images = [gray_img, prewitt, prewitt_vertical, prewitt_horizontal]
 
     fig = plt.figure(0)
     titles = ['Gray Image', 'Total', 'Vertical', 'Horizontal']
