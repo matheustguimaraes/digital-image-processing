@@ -17,17 +17,17 @@ def set_kernel(direction):
     return prewitt_kernel
 
 
-def get_prewitt_filter(image):
+def get_prewitt_filter(gray_image):
     borders = int(3 / 2)
-    prewitt_kernel_x = set_kernel(False)
-    prewitt_kernel_y = set_kernel(True)
-    prewitt_x = np.zeros(image.shape, dtype=np.int16)
-    prewitt_y = np.zeros(image.shape, dtype=np.int16)
-    prewitt_image = np.zeros(image.shape, dtype=np.int16)
-    for i in range(borders, image.shape[0] - borders):
-        for j in range(borders, image.shape[1] - borders):
-            prewitt_x[i][j] = np.sum(image[i - borders:i + borders + 1, j - borders:j + borders + 1] * prewitt_kernel_x)
-            prewitt_y[i][j] = np.sum(image[i - borders:i + borders + 1, j - borders:j + borders + 1] * prewitt_kernel_y)
+    kernel_x = set_kernel(False)
+    kernel_y = set_kernel(True)
+    prewitt_x = np.zeros(gray_image.shape, dtype=np.int16)
+    prewitt_y = np.zeros(gray_image.shape, dtype=np.int16)
+    prewitt_image = np.zeros(gray_image.shape, dtype=np.int16)
+    for i in range(borders, gray_image.shape[0] - borders):
+        for j in range(borders, gray_image.shape[1] - borders):
+            prewitt_x[i][j] = np.sum(gray_image[i - borders:i + borders + 1, j - borders:j + borders + 1] * kernel_x)
+            prewitt_y[i][j] = np.sum(gray_image[i - borders:i + borders + 1, j - borders:j + borders + 1] * kernel_y)
             prewitt_image[i][j] = math.sqrt(pow(prewitt_y[i][j], 2) + pow(prewitt_x[i][j], 2))
     return prewitt_image, prewitt_y, prewitt_x
 

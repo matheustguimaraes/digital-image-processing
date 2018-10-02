@@ -18,13 +18,13 @@ def set_kernel(type_temp):
     return laplacian_kernel
 
 
-def get_laplacian_filter(image, matrix_type):
+def get_laplacian_filter(gray_image, matrix_type):
     borders = int(matrix_type / 2)
     laplacian_kernel = set_kernel(matrix_type)
-    laplacian_image = np.zeros(image.shape, dtype=np.int16)
-    for i in range(borders, image.shape[0] - borders):
-        for j in range(borders, image.shape[1] - borders):
-            kernel = image[i - borders:i + borders + 1, j - borders:j + borders + 1] * laplacian_kernel
+    laplacian_image = np.zeros(gray_image.shape, dtype=np.int16)
+    for i in range(borders, gray_image.shape[0] - borders):
+        for j in range(borders, gray_image.shape[1] - borders):
+            kernel = gray_image[i - borders:i + borders + 1, j - borders:j + borders + 1] * laplacian_kernel
             laplacian_image[i, j] = np.sum(kernel)
     return laplacian_image
 

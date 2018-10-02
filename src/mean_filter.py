@@ -3,12 +3,12 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-def get_mean_filter(image, mask_size=3):
+def get_mean_filter(gray_image, mask_size=3):
     borders = int(mask_size / 2)
-    mean_filter = image[:, :].copy()
-    for i in range(borders, image.shape[0] - borders):
-        for j in range(borders, image.shape[1] - borders):
-            kernel = image[i - borders:i + borders + 1, j - borders:j + borders + 1]
+    mean_filter = gray_image[:, :].copy()
+    for i in range(borders, gray_image.shape[0] - borders):
+        for j in range(borders, gray_image.shape[1] - borders):
+            kernel = gray_image[i - borders:i + borders + 1, j - borders:j + borders + 1]
             mean_filter[i, j] = int(np.mean(kernel, dtype=np.float32))
     return mean_filter
 

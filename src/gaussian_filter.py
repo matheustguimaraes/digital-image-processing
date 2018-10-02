@@ -21,13 +21,13 @@ def set_mask_size(mask_size):
     return gaussian_kernel, division
 
 
-def get_gaussian_filter(image, mask_size=3):
+def get_gaussian_filter(gray_image, mask_size=3):
     borders = int(mask_size / 2)
-    gaussian_image = image[:, :].copy()
+    gaussian_image = gray_image[:, :].copy()
     gaussian_kernel, division = set_mask_size(mask_size)
-    for i in range(borders, image.shape[0] - borders):
-        for j in range(borders, image.shape[1] - borders):
-            kernel = image[i - borders:i + borders + 1, j - borders:j + borders + 1] * gaussian_kernel
+    for i in range(borders, gray_image.shape[0] - borders):
+        for j in range(borders, gray_image.shape[1] - borders):
+            kernel = gray_image[i - borders:i + borders + 1, j - borders:j + borders + 1] * gaussian_kernel
             result = np.sum(np.ravel(kernel)) / division
             gaussian_image[i, j] = result
     return gaussian_image

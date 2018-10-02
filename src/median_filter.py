@@ -3,20 +3,20 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-def get_median_filter(img, mask_size=3):
+def get_median_filter(gray_image, mask_size=3):
     borders = int(mask_size / 2)
-    median_filter = img[:, :].copy()
-    for i in range(borders, img.shape[0] - borders):
-        for j in range(borders, img.shape[1] - borders):
-            kernel = np.ravel(img[i - borders:i + borders + 1, j - borders:j + borders + 1])
+    median_filter = gray_image[:, :].copy()
+    for i in range(borders, gray_image.shape[0] - borders):
+        for j in range(borders, gray_image.shape[1] - borders):
+            kernel = np.ravel(gray_image[i - borders:i + borders + 1, j - borders:j + borders + 1])
             median = sorted(kernel)[int(((mask_size * mask_size) / 2) + 1)]
             median_filter[i, j] = median
     return median_filter
 
 
 if __name__ == '__main__':
-    image = cv2.imread('../samples/baboon.jpg')
-    gray_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    img = cv2.imread('../samples/baboon.jpg')
+    gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     images = []
     iterator = 3

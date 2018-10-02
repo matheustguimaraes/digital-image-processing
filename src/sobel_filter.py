@@ -17,17 +17,17 @@ def set_kernel(direction):
     return sobel_kernel
 
 
-def get_sobel_filter(image):
+def get_sobel_filter(gray_image):
     borders = int(3 / 2)
-    sobel_kernel_x = set_kernel(False)
-    sobel_kernel_y = set_kernel(True)
-    sobel_x = np.zeros(image.shape, dtype=np.int16)
-    sobel_y = np.zeros(image.shape, dtype=np.int16)
-    sobel_image = np.zeros(image.shape, dtype=np.int16)
-    for i in range(borders, image.shape[0] - borders):
-        for j in range(borders, image.shape[1] - borders):
-            sobel_x[i][j] = np.sum(image[i - borders:i + borders + 1, j - borders:j + borders + 1] * sobel_kernel_x)
-            sobel_y[i][j] = np.sum(image[i - borders:i + borders + 1, j - borders:j + borders + 1] * sobel_kernel_y)
+    kernel_x = set_kernel(False)
+    kernel_y = set_kernel(True)
+    sobel_x = np.zeros(gray_image.shape, dtype=np.int16)
+    sobel_y = np.zeros(gray_image.shape, dtype=np.int16)
+    sobel_image = np.zeros(gray_image.shape, dtype=np.int16)
+    for i in range(borders, gray_image.shape[0] - borders):
+        for j in range(borders, gray_image.shape[1] - borders):
+            sobel_x[i][j] = np.sum(gray_image[i - borders:i + borders + 1, j - borders:j + borders + 1] * kernel_x)
+            sobel_y[i][j] = np.sum(gray_image[i - borders:i + borders + 1, j - borders:j + borders + 1] * kernel_y)
             sobel_image[i][j] = math.sqrt(pow(sobel_y[i][j], 2) + pow(sobel_x[i][j], 2))
     return sobel_image, sobel_y, sobel_x
 
