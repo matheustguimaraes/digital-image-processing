@@ -7,7 +7,7 @@ def get_multithresholding_image(gray_image, t_min, t_max):
     thresholding_image = np.zeros(gray_image.shape)
     for i in range(0, gray_image.shape[0]):
         for j in range(0, gray_image.shape[1]):
-            thresholding_image[i][j] = 255 if ((gray_img[i][j] >= t_min) & (gray_img[i][j] < t_max)) else 0
+            thresholding_image[i][j] = 255 if ((gray_image[i][j] >= t_min) & (gray_image[i][j] < t_max)) else 0
     return thresholding_image
 
 
