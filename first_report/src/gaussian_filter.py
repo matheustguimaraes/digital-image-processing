@@ -62,7 +62,7 @@ if __name__ == '__main__':
         plt.subplot(2, 3, x + 1), plt.imshow(images[x], 'gray')
         plt.title(titles[x])
         plt.axis('off')
-        cv2.imwrite("../results/gaussian/mask_{}.jpg".format(x + 1), images[x])
+        cv2.imwrite("../results/gaussian/{}.jpg".format(titles[x]), images[x])
 
     fig.savefig("../results/gaussian/figure.jpg")
     plt.show()
