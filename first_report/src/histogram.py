@@ -34,6 +34,6 @@ if __name__ == '__main__':
     plt.legend(bbox_to_anchor=(1.1, 1.05))
     plt.title('Histogram')
 
-    fig.savefig("../results/histogram_figure.jpg", dpi=300)
+    fig.savefig("../results/histogram/histogram_figure.jpg", dpi=300)
     plt.show()
     plt.close()
