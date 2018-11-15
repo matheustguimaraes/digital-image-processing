@@ -4,22 +4,22 @@ from matplotlib import pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 
-def get_image_equalization(gray_image):
-    min_gray_value = gray_image.min()
-    max_gray_value = gray_image.max()
-    difference = int(max_gray_value - min_gray_value)
-    equalized_image = np.zeros(gray_image.shape)
-    for i in range(0, gray_image.shape[0]):
-        for j in range(0, gray_image.shape[1]):
-            equalized_image[i, j] = ((gray_image[i, j] - min_gray_value) * 255) / difference
-    return equalized_image
+def get_image_equalization(gray):
+    min_gray = gray.min()
+    max_gray = gray.max()
+    diff = int(max_gray - min_gray)
+    equalized = np.zeros(gray.shape)
+    for i in range(0, gray.shape[0]):
+        for j in range(0, gray.shape[1]):
+            equalized[i, j] = ((gray[i, j] - min_gray) * 255) / diff
+    return equalized
 
 
-def get_histogram(gray_image):
+def get_histogram(gray):
     hist = np.zeros(256)
-    for i in range(0, gray_image.shape[0]):
-        for j in range(0, gray_image.shape[1]):
-            hist[int(gray_image[i, j])] += 1
+    for i in range(0, gray.shape[0]):
+        for j in range(0, gray.shape[1]):
+            hist[int(gray[i, j])] += 1
     return hist
 
 
@@ -31,7 +31,10 @@ if __name__ == '__main__':
     eq_image = get_image_equalization(gray_img)
     histogram_equalization = get_histogram(eq_image)
 
-    images = [gray_img, histogram, eq_image, histogram]
+    images = [gray_img,
+              histogram,
+              eq_image,
+              histogram]
 
     fig = plt.figure(0)
     ax1 = fig.add_subplot(2, 2, 1)
@@ -58,6 +61,7 @@ if __name__ == '__main__':
     plt.xlim([0, 256])
     plt.legend(bbox_to_anchor=(1.1, 1.05))
 
-    fig.savefig("../results/equalized_histogram_figure.jpg", dpi=300)
+    fig.savefig("../results/equalized_histogram/figure.jpg", dpi=300)
     plt.show()
     plt.close()
+
