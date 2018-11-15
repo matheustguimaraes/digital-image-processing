@@ -37,3 +37,4 @@ if __name__ == '__main__':
     fig.savefig("../results/histogram/histogram_figure.jpg", dpi=300)
     plt.show()
     plt.close()
+
