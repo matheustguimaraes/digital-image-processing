@@ -27,7 +27,10 @@ if __name__ == '__main__':
         plt.subplot(2, 2, i + 1), plt.imshow(images[i], 'gray')
         plt.title(titles[i])
         plt.axis('off')
-        plt.subplots_adjust(left=0.0, bottom=0.05, right=1.0, top=0.95,
+        plt.subplots_adjust(left=0.0,
+                            bottom=0.05,
+                            right=1.0,
+                            top=0.95,
                             wspace=0.0)
 
     plt.show()
