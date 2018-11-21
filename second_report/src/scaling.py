@@ -3,23 +3,26 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-def scaling(gray, M, cols, rows):
-    return cv2.warpAffine(gray, M, (cols, rows))
+def scaling(gray, fx, fy):
+    return cv2.resize(gray, None, fx=fx, fy=fy, interpolation=cv2.INTER_CUBIC)
 
 
 if __name__ == '__main__':
     img = cv2.imread('../samples/lena.jpg')
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    img_rows, img_cols = gray_img.shape
 
-    M = np.float32([[1, 0, 100], [0, 1, 50]])
-    M2 = np.float32([[1, 0, 10], [0, 1, 40]])
-    M3 = np.float32([[1, 0, 50], [0, 1, 10]])
-    rows, cols = gray_img.shape
+    fx1 = 3
+    fx2 = 2
+
+    fy1 = 2
+    fy2 = 4
+    fy3 = 1
 
     images = [gray_img,
-              scaling(gray_img, M, cols, rows),
-              scaling(gray_img, M2, cols, rows),
-              scaling(gray_img, M3, cols, rows)]
+              scaling(gray_img, fx1, fy1),
+              scaling(gray_img, fx2, fy2),
+              scaling(gray_img, fx1, fy3)]
 
     fig = plt.figure(1)
     titles = ['Original', 'Scaling 1', 'Scaling 2', 'Scaling 3']
